@@ -18,7 +18,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('admin')->group(function () {
-   Route::get('/admin_only', [AdminController::class,'admin_only'])->name('admin.only');
+   Route::get('/add_category', [AdminController::class,'add_category'])->name('admin.add_category');
+   Route::post('/add_category', [AdminController::class,'post_addcategory'])->name('admin.post_addcategory');
 });
 
 require __DIR__.'/auth.php';

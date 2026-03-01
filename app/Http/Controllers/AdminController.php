@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class AdminController extends Controller
 {
-    public function admin_only()
+    public function add_category()
     {
-        return view('admin.admin_only');
+        return view('admin.add_category');
+    }
+
+    public function post_addcategory(Request $request)
+    {
+        $category = new Category();
+        $category->category = $request->category;
+        $category->save();
+        return redirect()->back()->with('category_message','Category added successfully!');
     }
 }
