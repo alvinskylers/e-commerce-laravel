@@ -90,11 +90,17 @@
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
                 <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
-                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Category </a>
-                  <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                <li><a href="#categoryDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Category </a>
+                  <ul id="categoryDropdown" class="collapse list-unstyled ">
                     <li><a href="{{ route('admin.add_category') }}">Add Category</a></li>
                     <li><a href="{{ route('admin.view_category') }}">View Category</a></li>
-                    <li><a href="#">Edit Category</a></li>
+                  </ul>
+                </li>
+                 <li><a href="#productDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Product </a>
+                  <ul id="productDropdown" class="collapse list-unstyled ">
+                    <li><a href="{{ route('admin.add_product') }}">Add Product</a></li>
+                    <li><a href="#') }}">View Products</a></li>
+                    <li><a href="#">Orders</a></li>
                   </ul>
                 </li>
         </ul>
@@ -111,6 +117,7 @@
          @yield('add_category')
          @yield('view_category')
          @yield('edit_category')
+         @yield('add_product')
         </section>
        
         

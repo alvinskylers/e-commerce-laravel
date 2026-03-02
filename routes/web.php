@@ -18,12 +18,17 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('admin')->group(function () {
-   Route::get('/add_category', [AdminController::class,'add_category'])->name('admin.add_category');
-   Route::post('/add_category', [AdminController::class,'post_addcategory'])->name('admin.post_addcategory');
-   Route::get('/view_categories', [AdminController::class,'view_categories'])->name('admin.view_category');
-   Route::get('/delete_category/{id}', [AdminController::class,'delete_category'])->name('admin.delete_category');
-   Route::get('/update_category/{id}', [AdminController::class,'edit_category'])->name('admin.update_category');
-   Route::post('/update_category/{id}', [AdminController::class,'post_editcategory'])->name('admin.post_update_category');
+    //category routes
+    Route::get('/add_category', [AdminController::class,'add_category'])->name('admin.add_category');
+    Route::post('/add_category', [AdminController::class,'post_addcategory'])->name('admin.post_addcategory');
+    Route::get('/view_categories', [AdminController::class,'view_categories'])->name('admin.view_category');
+    Route::get('/delete_category/{id}', [AdminController::class,'delete_category'])->name('admin.delete_category');
+    Route::get('/update_category/{id}', [AdminController::class,'edit_category'])->name('admin.update_category');
+    Route::post('/update_category/{id}', [AdminController::class,'post_editcategory'])->name('admin.post_update_category');
+
+    //product routes
+    Route::get('/add_product', [AdminController::class,'add_product'])->name('admin.add_product');
+    Route::post('/add_product', [AdminController::class,'post_add_product'])->name('admin.post_add_product');
 });
 
 require __DIR__.'/auth.php';
