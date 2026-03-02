@@ -110,6 +110,7 @@
          @yield('dashboard')
          @yield('add_category')
          @yield('view_category')
+         @yield('edit_category')
         </section>
        
         

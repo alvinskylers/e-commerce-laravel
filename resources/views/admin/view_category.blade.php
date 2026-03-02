@@ -28,8 +28,10 @@
                     <td>{{ $category->created_at }}</td>
                     <td>{{ $category->updated_at }}</td>
                     <td>
-                        <a href="{{ route('admin.delete_category', $category->id) }}" onclick="return confirm('Are you sure you want to delete this category?')">Delete</a>
-                    </td>
+                       <a href="{{ route('admin.update_category', $category->id) }}" style="color: #90D5FF;">Update</a>
+                        <a href="{{ route('admin.delete_category', $category->id) }}" 
+                           class="text-red-600 ml-2" 
+                           onclick="return confirm('Are you sure you want to delete this category?')">Delete</a>
                 </tr>
                 @endforeach
             </tbody>
