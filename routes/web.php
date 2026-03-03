@@ -30,6 +30,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/add_product', [AdminController::class,'add_product'])->name('admin.add_product');
     Route::post('/add_product', [AdminController::class,'post_add_product'])->name('admin.post_add_product');
     Route::get('/view_products', [AdminController::class,'view_products'])->name('admin.view_product');
+    Route::get('/delete_product/{id}', [AdminController::class,'delete_product'])->name('admin.delete_product');
 });
 
 require __DIR__.'/auth.php';

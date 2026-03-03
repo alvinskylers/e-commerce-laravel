@@ -93,8 +93,25 @@ class AdminController extends Controller
 
     public function view_products()
     {
-        $products = Product::all();
+        $products = Product::paginate(5);
         return view('admin.view_product',compact('products'));
+    }
+
+    public function delete_product($id)
+    {
+        $product = Product::findOrFail($id);
+        $image_path = public_path('products/' . $product->product_image);
+        
+        if (file_exists($image_path)) {
+            unlink($image_path);
+        }
+
+        if($product){
+            $product->delete();
+            return redirect()->back()->with('delete_message','Product deleted successfully!');
+        }
+
+        return redirect()->back()->with('delete_message','Product not found!');
     }
 
 }

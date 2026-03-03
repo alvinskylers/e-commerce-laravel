@@ -2,9 +2,9 @@
 
 @section('view_product')
 
-    @if(session(''))
+    @if(session('delete_message'))
         <div class="alert alert-danger mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
-            {{ session(key: '') }}
+            {{ session('delete_message') }}
         </div>
     @endif
 
@@ -30,7 +30,7 @@
                 <tr>
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->product_title }}</td>
-                    <td>{{ $product->product_description }}</td>
+                    <td>{{ Str::limit($product->product_description, 50) }}</td>
                     <td>{{ $product->product_price }}</td>
                     <td>{{ $product->product_quantity }}</td>
                     <td>
@@ -39,14 +39,15 @@
                     <td>{{ $product->product_category }}</td>
                     <td>{{ $product->created_at }}</td>
                     <td>{{ $product->updated_at }}</td>
-                    {{-- <td>
-                       <a href="{{ route('', $proEnter product description here...duct->id) }}" style="color: #90D5FF;">Update</a>
-                        <a href="{{ route('', $product->id) }}" 
+                    <td>
+                        {{-- <a href="{{ route('admin.edit_product', $product->id) }}" style="color: #90D5FF;">Update</a> --}}
+                        <a href="{{ route('admin.delete_product', $product->id) }}" 
                            class="text-red-600 ml-2" 
-                           onclick="return confirm('Are you sure you want to delete this category?')">Delete</a>
-                    </td> --}}
+                           onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+                    </td>
                 </tr>
                 @endforeach
+                {{ $products->links() }}
             </tbody>
         </table>
     </div>
