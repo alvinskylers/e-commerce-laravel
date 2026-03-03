@@ -99,7 +99,7 @@
                  <li><a href="#productDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Product </a>
                   <ul id="productDropdown" class="collapse list-unstyled ">
                     <li><a href="{{ route('admin.add_product') }}">Add Product</a></li>
-                    <li><a href="#') }}">View Products</a></li>
+                    <li><a href="{{ route('admin.view_product') }}">View Products</a></li>
                     <li><a href="#">Orders</a></li>
                   </ul>
                 </li>
@@ -118,6 +118,7 @@
          @yield('view_category')
          @yield('edit_category')
          @yield('add_product')
+         @yield('view_product')
         </section>
        
         
