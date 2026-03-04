@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function home()
     {
-        $products = Product::all();
+        $products = Product::latest()->take(8)->get();
         return view('index',compact('products'));
     }
 
@@ -29,5 +29,11 @@ class UserController extends Controller
     {
         $product = Product::findOrFail($id);
         return view('product_details',compact('product'));
+    }
+
+    public function all_products()
+    {
+        $products = Product::all();
+        return view('all_products',compact('products'));
     }
 }
