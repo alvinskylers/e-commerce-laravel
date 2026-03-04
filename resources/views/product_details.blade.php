@@ -1,6 +1,13 @@
 @extends('maindesign')
 <base href="/public">
 @section('product_details')
+
+    @if(session('cart_message'))
+        <div class="alert alert-success mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+            {{ session('cart_message') }}
+        </div>
+    @endif
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -9,22 +16,21 @@
                     <div class="col-md-6">
                         <img src="{{ asset('products/' . $product->product_image) }}" class="img-fluid rounded-start" alt="{{ $product->product_title }}">
                     </div>
-                    
+
                     <div class="col-md-6">
                         <div class="card-body p-4">
-                            
+
                             <h2 class="card-title fw-bold">{{ $product->product_title }}</h2>
                             <p class="text-muted small">{{ $product->product_category}}</p>
-                            
+
                             <h3 class="text-primary my-3">${{ number_format($product->product_price, 2) }}</h3>
-                            
+
                             <p class="card-text text-secondary">
                                 {{ $product->product_description }}
                             </p>
 
                             <div class="d-grid gap-2 mt-4">
-                                <button class="btn btn-primary btn-lg" type="button">Add to Cart</button>
-                                <button class="btn btn-outline-secondary" type="button">Save to Wishlist</button>
+                                <a class="btn btn-primary btn-lg" type="button" href="{{ route('add_to_cart', $product->id) }}">Add to Cart</a>
                             </div>
                         </div>
                     </div>
@@ -38,7 +44,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <h4 class="mb-4 text-secondary">Customer Reviews (2)</h4>
-            
+
             <div class="card mb-3 border-0 shadow-sm">
                 <div class="card-body">
                     <div class="d-flex align-items-center mb-2">
