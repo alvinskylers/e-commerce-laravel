@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 
 Route::get('/', [UserController::class, 'home'])->name('index');
+Route::get('/product_details/{id}', [UserController::class, 'product_details'])->name('product_details');
+
 
 Route::get('/dashboard', [UserController::class,'index'] )->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -31,6 +33,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/delete_product/{id}', [AdminController::class,'delete_product'])->name('admin.delete_product');
     Route::get('/update_product/{id}', [AdminController::class,'update_product'])->name('admin.update_product');
     Route::post('/update_product/{id}', [AdminController::class,'post_edit_product'])->name('admin.post_edit_product');
+    Route::post('/search_products', [AdminController::class,'search_products'])->name('admin.search_products');
 });
 
 require __DIR__.'/auth.php';

@@ -10,6 +10,13 @@
 
     <div class="container-fluid">
         <h2>Products</h2>
+        <div>
+            <form method="post" action="{{ route('admin.search_products') }}">
+                @csrf
+                <input type="text" name="search" placeholder="Search products..." class="form-control mb-3 col-3 d-inline-block">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
         <table class="table">
             <thead>
                 <tr>

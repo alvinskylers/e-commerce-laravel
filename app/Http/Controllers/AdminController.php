@@ -155,4 +155,13 @@ class AdminController extends Controller
 
         return redirect()->back()->with('update_message','Product not found!');
     }
+
+    public function search_products(Request $request)
+    {
+        $searchTerm = $request->input('search');
+        $products = Product::where('product_title', 'LIKE', '%' . $searchTerm . '%')
+                            ->orWhere('product_description', 'LIKE', '%' . $searchTerm . '%')
+                            ->paginate(5);
+        return view('admin.view_product', compact('products'));
+    }
 }
