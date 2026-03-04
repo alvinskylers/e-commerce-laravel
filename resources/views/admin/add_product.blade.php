@@ -19,7 +19,7 @@
             <input type="file" name="product_image" placeholder="Upload Product Image"> <label for="product_image">Upload Product Image</label>
             <select name="category">
                 @foreach ($categories as $category )
-                <option value="{{ $category->id }}">{{ $category->category }}</option>
+                <option value="{{ $category->category }}">{{ $category->category }}</option>
                 @endforeach
             </select>
             <input type="submit" name="submit" value="Add Product">

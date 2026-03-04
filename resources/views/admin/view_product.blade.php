@@ -40,7 +40,7 @@
                     <td>{{ $product->created_at }}</td>
                     <td>{{ $product->updated_at }}</td>
                     <td>
-                        {{-- <a href="{{ route('admin.edit_product', $product->id) }}" style="color: #90D5FF;">Update</a> --}}
+                        <a href="{{ route('admin.update_product', $product->id) }}" style="color: #90D5FF;">Update</a>
                         <a href="{{ route('admin.delete_product', $product->id) }}" 
                            class="text-red-600 ml-2" 
                            onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>

@@ -119,6 +119,7 @@
          @yield('edit_category')
          @yield('add_product')
          @yield('view_product')
+         @yield('edit_product')
         </section>
        
         

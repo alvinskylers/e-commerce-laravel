@@ -114,4 +114,45 @@ class AdminController extends Controller
         return redirect()->back()->with('delete_message','Product not found!');
     }
 
+    public function update_product($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        if($product){
+            return view('admin.edit_product',compact('product','categories'));
+        }
+
+        return redirect()->back()->with('update_message','Product not found!');
+    }
+
+    public function post_edit_product(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        if($product){
+            $product->product_title = $request->product_title;
+            $product->product_description = $request->product_description;
+            $product->product_price = $request->product_price;
+            $product->product_quantity = $request->product_quantity;
+            $product->product_category = $request->category;
+            
+            $image = $request->product_image;
+            if ($image) {
+                // Delete old image
+                $oldImagePath = public_path('products/' . $product->product_image);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+                
+                // Save new image
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $product->product_image = $imageName;
+                $request->product_image->move('products', $imageName);
+            }
+            
+            $product->save();
+            return redirect()->back()->with('update_message','Product updated successfully!');
+        }
+
+        return redirect()->back()->with('update_message','Product not found!');
+    }
 }
