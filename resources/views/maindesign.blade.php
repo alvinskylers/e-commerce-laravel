@@ -92,7 +92,7 @@
             @endif
 
             <a href="">
-              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+              <i class="fa fa-shopping-bag" aria-hidden="true">{{ $totalItemsInCart }}</i>
             </a>
             <form class="form-inline ">
               <button class="btn nav_search-btn" type="submit">
@@ -114,7 +114,7 @@
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-7">
-                    <div class="detail-box"> 
+                    <div class="detail-box">
                       <h1>
                         Welcome To Our <br>
                         Gift Shop
@@ -135,9 +135,9 @@
                 </div>
               </div>
             </div>
-            
+
           </div>
-          
+
         </div>
       </div>
     </section>
@@ -199,7 +199,7 @@
 
   <!-- end contact section -->
 
-   
+
 
   <!-- info section -->
 

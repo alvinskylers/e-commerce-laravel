@@ -22,14 +22,26 @@ class UserController extends Controller
 
     public function home()
     {
+        if (Auth::check()) {
+            $totalItemsInCart = ProductCart::where('user_id', Auth::id())->count();
+        } else  {
+            $totalItemsInCart = '';
+        }
+
         $products = Product::latest()->take(8)->get();
-        return view('index',compact('products'));
+        return view('index',compact('products','totalItemsInCart'));
     }
 
     public function product_details($id)
     {
+        if (Auth::check()) {
+            $totalItemsInCart = ProductCart::where('user_id', Auth::id())->count();
+        } else  {
+            $totalItemsInCart = '';
+        }
+
         $product = Product::findOrFail($id);
-        return view('product_details',compact('product'));
+        return view('product_details',compact('product','totalItemsInCart'));
     }
 
     public function all_products()
