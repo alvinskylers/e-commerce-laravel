@@ -2,13 +2,14 @@
 <base href="/public">
 @section('product_details')
 
+<div class="container">
+
     @if(session('cart_message'))
         <div class="alert alert-success mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
             {{ session('cart_message') }}
         </div>
     @endif
 
-<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card product-card">
