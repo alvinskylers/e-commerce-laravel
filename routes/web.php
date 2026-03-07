@@ -14,6 +14,7 @@ Route::get('/add_to_cart/{id}', [UserController::class,'add_product_to_cart'] )-
 Route::get('/cart', [UserController::class,'view_cart'] )->middleware(['auth', 'verified'])->name('view_cart');
 Route::get('/remove_cart_item/{id}', [UserController::class,'remove_cart_item'] )->middleware(['auth', 'verified'])->name('remove_cart_item');
 Route::post('/confirm_order', [UserController::class,'confirm_order'] )->middleware(['auth', 'verified'])->name('confirm_order');
+Route::get('/my_orders', [UserController::class,'view_orders'] )->middleware(['auth', 'verified'])->name('my_orders');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

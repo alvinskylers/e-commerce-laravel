@@ -100,4 +100,10 @@ class UserController extends Controller
 
         return redirect()->back()->with('order_message', 'Order has been placed successfully!');
     }
+
+    public function view_orders()
+    {
+        $orders =  Orders::where('user_id', Auth::id())->get();
+        return view('view_orders',compact('orders'));
+    }
 }
