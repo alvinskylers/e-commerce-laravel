@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head> 
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>E-Commerce | Admin Dashboard </title>
@@ -26,7 +26,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
-    <header class="header">   
+    <header class="header">
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid d-flex align-items-center justify-content-between">
           <div class="navbar-header">
@@ -36,7 +36,7 @@
             <!-- Sidebar Toggle Btn-->
             <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
           </div>
-          <div class="right-menu list-inline no-margin-bottom">    
+          <div class="right-menu list-inline no-margin-bottom">
             <div class="list-inline-item"><a href="#" class="search-open nav-link"><i class="icon-magnifying-glass-browser"></i></a></div>
             <div class="list-inline-item dropdown"><a id="navbarDropdownMenuLink1" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link messages-toggle"><i class="icon-email"></i><span class="badge dashbg-1">5</span></a>
               <div aria-labelledby="navbarDropdownMenuLink1" class="dropdown-menu messages"><a href="#" class="dropdown-item message d-flex align-items-center">
@@ -57,9 +57,9 @@
                   </div>
                   <div class="content">   <strong class="d-block">Sara Wood</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">10:30pm</small></div></a><a href="#" class="dropdown-item text-center message"> <strong>See All Messages <i class="fa fa-angle-right"></i></strong></a></div>
             </div>
-        
+
             <!-- Log out               -->
-            <div class="list-inline-item logout">                   
+            <div class="list-inline-item logout">
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -71,7 +71,7 @@
                     </x-responsive-nav-link>
                 </form>
             </div>
-            
+
           </div>
         </div>
       </nav>
@@ -100,7 +100,7 @@
                   <ul id="productDropdown" class="collapse list-unstyled ">
                     <li><a href="{{ route('admin.add_product') }}">Add Product</a></li>
                     <li><a href="{{ route('admin.view_product') }}">View Products</a></li>
-                    <li><a href="#">Orders</a></li>
+                    <li><a href="{{ route('admin.view_orders') }}">Orders</a></li>
                   </ul>
                 </li>
         </ul>
@@ -112,7 +112,7 @@
             <h2 class="h5 no-margin-bottom">Dashboard</h2>
           </div>
         </div>
-        <section class="no-padding-top no-padding-bottom">        
+        <section class="no-padding-top no-padding-bottom">
          @yield('dashboard')
          @yield('add_category')
          @yield('view_category')
@@ -120,9 +120,10 @@
          @yield('add_product')
          @yield('view_product')
          @yield('edit_product')
+         @yield('view_orders')
         </section>
-       
-        
+
+
         <footer class="footer">
           <div class="footer__block block no-margin-bottom">
             <div class="container-fluid text-center">

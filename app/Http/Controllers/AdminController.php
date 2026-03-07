@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Orders;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
@@ -74,15 +75,15 @@ class AdminController extends Controller
         $product->product_price = $request->product_price;
         $product->product_quantity = $request->product_quantity;
         $product->product_category = $request->category;
-        
+
         $image = $request->product_image;
         if ($image) {
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $product->product_image = $imageName;
         }
-        
+
         $product->save();
-        
+
         if ($image && $product-> save()) {
             $request->product_image->move('products',$imageName);
         }
@@ -101,7 +102,7 @@ class AdminController extends Controller
     {
         $product = Product::findOrFail($id);
         $image_path = public_path('products/' . $product->product_image);
-        
+
         if (file_exists($image_path)) {
             unlink($image_path);
         }
@@ -134,7 +135,7 @@ class AdminController extends Controller
             $product->product_price = $request->product_price;
             $product->product_quantity = $request->product_quantity;
             $product->product_category = $request->category;
-            
+
             $image = $request->product_image;
             if ($image) {
                 // Delete old image
@@ -142,13 +143,13 @@ class AdminController extends Controller
                 if (file_exists($oldImagePath)) {
                     unlink($oldImagePath);
                 }
-                
+
                 // Save new image
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
                 $product->product_image = $imageName;
                 $request->product_image->move('products', $imageName);
             }
-            
+
             $product->save();
             return redirect()->back()->with('update_message','Product updated successfully!');
         }
@@ -161,7 +162,14 @@ class AdminController extends Controller
         $searchTerm = $request->input('search');
         $products = Product::where('product_title', 'LIKE', '%' . $searchTerm . '%')
                             ->orWhere('product_description', 'LIKE', '%' . $searchTerm . '%')
+                            ->orWhere('product_category', 'LIKE', '%' . $request->search.'%')
                             ->paginate(5);
         return view('admin.view_product', compact('products'));
     }
+
+    public function view_orders() {
+        $orders = Orders::all();
+        return view('admin.view_orders',compact('orders'));
+    }
+
 }
