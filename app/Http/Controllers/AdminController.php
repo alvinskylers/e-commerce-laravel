@@ -172,4 +172,12 @@ class AdminController extends Controller
         return view('admin.view_orders',compact('orders'));
     }
 
+    public function update_order(Request $request, $id)
+    {
+        $order= Orders::findOrFail($id);
+        $order->status = $request->status;
+        $order->save();
+        return redirect()->back()->with('update_message','Order status updated successfully!');
+    }
+
 }

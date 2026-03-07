@@ -21,7 +21,6 @@
                 <th>Price</th>
                 <th>Image</th>
                 <th>Category</th>
-                <th>Status</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -37,8 +36,17 @@
                         <img src="{{ asset('products/' . $order->product->product_image) }}" alt="Product Image" width="100">
                     </td>
                     <td>{{ $order->product->product_category }}</td>
-                    <td>{{ $order->status }}</td>
-                    <td></td>
+                    <td>
+                        <form action="{{ route('admin.update_status', $order->id) }}" method="post">
+                            @csrf
+                            <select name="status" id="">
+                                <option value="{{ $order->status }}">{{ $order->status }}</option>
+                                <option value="Delivered">Delivered</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                            <input type="submit" name="submit" value="submit" onclick="return confirm('Are you sure?')">
+                        </form>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
