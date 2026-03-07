@@ -47,6 +47,18 @@
                 </tr>
             </tbody>
         </table>
+
+            @if(session('order_message'))
+                <div class="alert alert-success mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+                    {{ session('order_message') }}
+                </div>
+            @endif
+
+            <form action="{{ route('confirm_order') }}" method="post">
+                @csrf
+                <input type="text" name="reciever_address" placeholder="address goes here" required>
+                <input type="text" name="reciever_phone" placeholder="phone goes here" required> <input type="submit" name="submit" value="confirm order">
+            </form>
     </div>
 
 @endsection

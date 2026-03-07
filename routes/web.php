@@ -13,10 +13,11 @@ Route::get('/dashboard', [UserController::class,'index'] )->middleware(['auth', 
 Route::get('/add_to_cart/{id}', [UserController::class,'add_product_to_cart'] )->middleware(['auth', 'verified'])->name('add_to_cart');
 Route::get('/cart', [UserController::class,'view_cart'] )->middleware(['auth', 'verified'])->name('view_cart');
 Route::get('/remove_cart_item/{id}', [UserController::class,'remove_cart_item'] )->middleware(['auth', 'verified'])->name('remove_cart_item');
+Route::post('/confirm_order', [UserController::class,'confirm_order'] )->middleware(['auth', 'verified'])->name('confirm_order');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.u      pdate');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
