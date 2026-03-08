@@ -48,8 +48,15 @@ class UserController extends Controller
 
     public function all_products()
     {
+        if (Auth::check()) {
+            $totalItemsInCart = ProductCart::where('user_id', Auth::id())->count();
+            $cart = ProductCart::where('user_id', Auth::id())->get();
+        } else  {
+            $totalItemsInCart = '';
+        }
+
         $products = Product::all();
-        return view('all_products',compact('products'));
+        return view('all_products',compact('products', 'totalItemsInCart'));
     }
 
     public function add_product_to_cart($id)
