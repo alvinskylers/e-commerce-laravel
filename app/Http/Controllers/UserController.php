@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\ProductCart;
 use App\Models\Orders;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class UserController extends Controller
 {
@@ -105,5 +106,12 @@ class UserController extends Controller
     {
         $orders =  Orders::where('user_id', Auth::id())->get();
         return view('view_orders',compact('orders'));
+    }
+
+    public function download_invoice($id)
+    {
+        $data = Orders::findOrFail($id);
+        $pdf = Pdf::loadView('invoice', compact('data'));
+        return $pdf->download('invoice.pdf');
     }
 }

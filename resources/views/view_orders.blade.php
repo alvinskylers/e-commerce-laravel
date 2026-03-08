@@ -55,8 +55,7 @@
 
                                     <td class="px-6 py-4 text-right">
                                         <div class="flex justify-end gap-2">
-                                            <a href="#" class="text-blue-600 hover:text-blue-900 font-medium">View</a>
-                                            <button class="text-red-600 hover:text-red-900 font-medium">Cancel</button>
+                                            <a href="{{ route('download_invoice', $order->id) }}" class="text-blue-600 hover:text-blue-900 font-medium">Download Invoice</a>
                                         </div>
                                     </td>
                                 </tr>

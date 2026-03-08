@@ -15,10 +15,11 @@ Route::get('/cart', [UserController::class,'view_cart'] )->middleware(['auth', '
 Route::get('/remove_cart_item/{id}', [UserController::class,'remove_cart_item'] )->middleware(['auth', 'verified'])->name('remove_cart_item');
 Route::post('/confirm_order', [UserController::class,'confirm_order'] )->middleware(['auth', 'verified'])->name('confirm_order');
 Route::get('/my_orders', [UserController::class,'view_orders'] )->middleware(['auth', 'verified'])->name('my_orders');
+Route::get('/download_invoice/{id}', [UserController::class,'download_invoice'])->middleware(['auth', 'verified'])->name('download_invoice');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.u      pdate');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
